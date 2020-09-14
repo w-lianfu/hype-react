@@ -1,19 +1,16 @@
 import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import { Button } from '@material-ui/core';
 
 interface IProps extends RouteComponentProps {
   history: any;
 }
 interface IState {}
 
-const Home = (props: IProps, state: IState) => {
+const Setting = (props: IProps, state: IState) => {
   return (
-    <div>
-      <Button variant="contained" color="primary">Home Page</Button>
-    </div>
+    <h2>Setting...</h2>
   );
 };
 
-export default withRouter(observer(Home));
+export default withRouter(observer(Setting));

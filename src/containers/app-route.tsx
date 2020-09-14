@@ -3,15 +3,15 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import '@globalScss/index.scss';
 import AppTheme from './app-theme';
-import Home from '@comp/home';
+import AppMenu from './app-menu';
 
 const AppRoute = () => {
   return (
     <AppTheme>
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route component={Home} />
+          <Route exact path="/" component={AppMenu} />
+          <Route component={AppMenu} />
         </Switch>
       </Router>
     </AppTheme>
