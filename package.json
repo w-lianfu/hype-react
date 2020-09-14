@@ -30,11 +30,14 @@
     "babel-preset-react-app": "^9.1.2",
     "camelcase": "^6.0.0",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
+    "cross-env": "^7.0.2",
     "css-loader": "4.3.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
     "emotion": "^10.0.27",
     "eslint": "^7.9.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-typescript": "^10.0.0",
     "eslint-config-react-app": "^5.2.1",
     "eslint-loader": "4.0.2",
     "eslint-plugin-emotion": "^10.0.27",
@@ -62,11 +65,13 @@
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "pnp-webpack-plugin": "1.6.4",
+    "postcss-cssnext": "^3.1.0",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-loader": "4.0.1",
     "postcss-normalize": "9.0.0",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "4.0.2",
+    "postcss-scss": "^2.1.1",
     "ramda": "^0.27.1",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
@@ -92,22 +97,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "test": "node scripts/test.js",
+    "lint": "cross-env NODE_ENV=development eslint . --cache --ext .js,.jsx,.ts,.tsx"
   },
   "jest": {
     "roots": [
@@ -152,16 +143,15 @@
       "json",
       "web.jsx",
       "jsx",
-      "node"
+      "node",
+      "css",
+      "global.css",
+      "scss",
+      "global.scss"
     ],
     "watchPlugins": [
       "jest-watch-typeahead/filename",
       "jest-watch-typeahead/testname"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "react-app"
     ]
   }
 }

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "lib": [
       "dom",
@@ -17,7 +18,28 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "@/*": ["src/*"],
+      "@global/*": ["src/global/*"],
+      "@globalComp/*": ["src/global/components/*"],
+      "@globalScss/*": ["src/global/scss/*"],
+      "@globalStore/*": ["src/global/store/*"],
+      "@globalStyled/*": ["src/global/styled/*"],
+      "@comp/*": ["src/components/*"],
+      "@con/*": ["src/containers/*"],
+      "@store/*": ["src/store/*"],
+      "@scss/*": ["src/scss/*"],
+      "@utils/*": ["src/utils/*"],
+      "@tools/*": ["src/utils/tools/*"],
+      "@themeConfig/*": ["src/utils/themeConfig/*"],
+      "@static/*": ["src/static/*"],
+      "@image/*": ["src/static/image/*"],
+      "@docs/*": ["src/docs/*"],
+      "@test/*": ["src/tests/*"]
+    }
   },
   "include": [
     "src"
