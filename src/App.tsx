@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '@globalScss/index.scss';
+
 function App() {
   return (
     <div>
