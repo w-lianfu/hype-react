@@ -4,14 +4,17 @@ import {
   Route,
   withRouter,
   RouteComponentProps,
+  Redirect,
   Link,
 } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { Paper } from '@material-ui/core';
 
+import auth from '@globalStore/auth';
+import screen from '@globalStore/screen';
 import Home from '@comp/home';
 import Setting from '@comp/setting';
-import screen from '@globalStore/screen';
+import AppLock from './app-lock';
 
 interface IProps extends RouteComponentProps {
   history: any;
@@ -30,7 +33,7 @@ const AppMenu = (props: IProps, state: IState) => {
     return () => {
       window.removeEventListener('resize', onResize);
     };
-  }, []);
+  }, [auth.isAuth]);
 
   return (
     <Paper
@@ -39,7 +42,6 @@ const AppMenu = (props: IProps, state: IState) => {
         height: `${screen.height}px`,
         width: '100%',
       }}>
-      <h2>Hello</h2>
       <p>
         <Link to="/home">Home</Link>
       </p>
@@ -50,6 +52,9 @@ const AppMenu = (props: IProps, state: IState) => {
       <Switch>
         <Route exact path="/home" component={Home} />
         <Route exact path="/setting" component={Setting} />
+        <Route render={() => (
+          auth.isAuth ? <Redirect to="/home" /> : <AppLock />
+        )} />
       </Switch>
     </Paper>
   );

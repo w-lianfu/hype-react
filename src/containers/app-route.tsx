@@ -1,11 +1,20 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  RouteComponentProps,
+} from 'react-router-dom';
 
 import '@globalScss/index.scss';
 import AppTheme from './app-theme';
 import AppMenu from './app-menu';
 
-const AppRoute = () => {
+interface IProps {}
+interface IState {}
+
+const AppRoute = (props: IProps, state: IState) => {
   return (
     <AppTheme>
       <Router>

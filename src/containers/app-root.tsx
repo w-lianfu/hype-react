@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-const AppRoot = () => {
+interface IProps {
+  children: ReactNode;
+}
+interface IState {}
+
+const AppRoot = (props: IProps, state: IState) => {
+  const { children } = props;
+
   return (
-    <div>hello</div>
+    <>{children}</>
   );
 };
 
