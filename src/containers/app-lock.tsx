@@ -1,8 +1,26 @@
-import React, { useEffect, ReactNode } from 'react';
+import React, {
+  useEffect,
+  useState,
+  ReactNode,
+  ChangeEvent,
+  KeyboardEvent,
+  MouseEvent,
+} from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import { Paper, Button } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import {
+  Paper,
+  Button,
+  Typography,
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  Input,
+  InputAdornment,
+  IconButton,
+} from '@material-ui/core';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 import auth from '@globalStore/auth';
 import AppPortal from './app-portal';
@@ -28,23 +46,71 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
       background: 'rgba(255, 255, 255, 0.8)',
     },
-    typography: {
-      marginBottom: '30px',
+    top30: {
+      marginTop: '30px',
     },
   }));
 
 const AppLock = (props: IProps, state: IState) => {
   const { history, children } = props;
+  const { isAuth, setAuth, showPwd, toggleShow, pwd, setPwd, isError, setError, reset } = auth;
   const classes = useStyles();
 
+  useEffect(() => {
+    reset();
+  }, []);
+
   const onLogin = () => {
-    auth.setAuth(true);
+    if (pwd === '2020') {
+      setError(false);
+      setAuth(true);
+      history.push('/home');
+    } else {
+      setError(true);
+      setAuth(false);
+    }
+  };
+
+  const changePwd = (event: ChangeEvent) => {
+    // @ts-ignore
+    setPwd(event.target.value);
+  };
+
+  const onKeyDown = (event: KeyboardEvent) => {
+    const keyCode = event.keyCode || event.charCode;
+
+    if (keyCode === 13) onLogin();
   };
 
   return (
     <AppPortal>
       <Paper square className={classes.lockStyle}>
-        <Button variant="contained" color="primary" onClick={onLogin}>Login</Button>
+        <FormControl variant="outlined" error={isError}>
+          <InputLabel>Password</InputLabel>
+          <Input
+            autoFocus
+            type={showPwd ? 'text' : 'password'}
+            value={pwd}
+            endAdornment={
+              // eslint-disable-next-line react/jsx-wrap-multilines
+              <InputAdornment position="end">
+                <IconButton onClick={toggleShow}>
+                  { showPwd ? <Visibility /> : <VisibilityOff /> }
+                </IconButton>
+              </InputAdornment>
+            }
+            onChange={changePwd}
+            onKeyDown={onKeyDown} />
+          <FormHelperText className={isError ? 'visible' : 'hidden'}>Error</FormHelperText>
+        </FormControl>
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={onLogin}
+          className={classes.top30}>
+          Login
+        </Button>
       </Paper>
       <>{children}</>
     </AppPortal>
