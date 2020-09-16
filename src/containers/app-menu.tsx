@@ -4,7 +4,6 @@ import {
   Route,
   withRouter,
   RouteComponentProps,
-  Redirect,
   Link,
 } from 'react-router-dom';
 import { observer } from 'mobx-react';
@@ -14,7 +13,6 @@ import auth from '@globalStore/auth';
 import screen from '@globalStore/screen';
 import Home from '@comp/home';
 import Setting from '@comp/setting';
-import AppLock from './app-lock';
 
 interface IProps extends RouteComponentProps {
   history: any;
@@ -52,9 +50,6 @@ const AppMenu = (props: IProps, state: IState) => {
       <Switch>
         <Route exact path="/home" component={Home} />
         <Route exact path="/setting" component={Setting} />
-        <Route render={() => (
-          auth.isAuth ? <Redirect to="/home" /> : <AppLock />
-        )} />
       </Switch>
     </Paper>
   );

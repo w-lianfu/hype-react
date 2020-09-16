@@ -1,16 +1,21 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { observer } from 'mobx-react';
 
-interface IProps {
-  children: ReactNode;
+import AppLock from './app-lock';
+import AppMenu from './app-menu';
+
+interface IProps extends RouteComponentProps {
+  history: any;
 }
 interface IState {}
 
 const AppRoot = (props: IProps, state: IState) => {
-  const { children } = props;
-
   return (
-    <>{children}</>
+    <AppLock>
+      <AppMenu />
+    </AppLock>
   );
 };
 
-export default AppRoot;
+export default withRouter(observer(AppRoot));

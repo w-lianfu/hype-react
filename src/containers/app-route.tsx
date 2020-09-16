@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
-  RouteComponentProps,
 } from 'react-router-dom';
+import { observer } from 'mobx-react';
 
 import '@globalScss/index.scss';
+import auth from '@globalStore/auth';
 import AppTheme from './app-theme';
 import AppMenu from './app-menu';
+import AppRoot from './app-root';
 
 interface IProps {}
 interface IState {}
@@ -19,12 +20,12 @@ const AppRoute = (props: IProps, state: IState) => {
     <AppTheme>
       <Router>
         <Switch>
-          <Route exact path="/" component={AppMenu} />
-          <Route component={AppMenu} />
+          <Route exact path="/" component={auth.isAuth ? AppMenu : AppRoot} />
+          <Route component={auth.isAuth ? AppMenu : AppRoot} />
         </Switch>
       </Router>
     </AppTheme>
   );
 };
 
-export default AppRoute;
+export default observer(AppRoute);

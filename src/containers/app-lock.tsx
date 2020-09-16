@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, ReactNode } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { Paper, Button } from '@material-ui/core';
@@ -9,6 +9,7 @@ import AppPortal from './app-portal';
 
 interface IProps extends RouteComponentProps {
   history: any;
+  children: ReactNode;
 }
 interface IState {}
 
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      background: 'rgba(255, 255, 255, 0.9)',
+      background: 'rgba(255, 255, 255, 0.8)',
     },
     typography: {
       marginBottom: '30px',
@@ -33,10 +34,8 @@ const useStyles = makeStyles((theme: Theme) =>
   }));
 
 const AppLock = (props: IProps, state: IState) => {
+  const { history, children } = props;
   const classes = useStyles();
-
-  useEffect(() => {
-  }, [auth.isAuth]);
 
   const onLogin = () => {
     auth.setAuth(true);
@@ -47,6 +46,7 @@ const AppLock = (props: IProps, state: IState) => {
       <Paper square className={classes.lockStyle}>
         <Button variant="contained" color="primary" onClick={onLogin}>Login</Button>
       </Paper>
+      <>{children}</>
     </AppPortal>
   );
 };
