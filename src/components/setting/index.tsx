@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import { Paper, Button } from '@material-ui/core';
+import { Box, Typography, Button } from '@material-ui/core';
 
 interface IProps extends RouteComponentProps {
   history: any;
@@ -10,12 +10,12 @@ interface IState {}
 
 const Setting = (props: IProps, state: IState) => {
   return (
-    <Paper square>
-      <p>A drop of water.</p>
+    <Box>
+      <Typography>Stockholm is the cultural, political, and economic centre of Sweden.</Typography>
       <Link to="/home">
         <Button variant="contained">Home Page</Button>
       </Link>
-    </Paper>
+    </Box>
   );
 };
 

@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 
 class Auth {
-  @observable public isAuth: boolean = false;
+  @observable public isAuth: boolean = true;
   @observable public showPwd: boolean = false;
   @observable public pwd: string = '';
   @observable public isError: boolean = false;
@@ -28,7 +28,7 @@ class Auth {
 
   @action.bound
   public reset = () => {
-    // this.isAuth = false;
+    // this.isAuth = true;
     this.showPwd = false;
     this.pwd = '';
     this.isError = false;

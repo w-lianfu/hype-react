@@ -41,7 +41,6 @@ const AppDial = (props: IProps, state: IState) => {
 
   // on lock
   const onLock = () => {
-    history.push('/lock');
     auth.setAuth(false);
   };
 

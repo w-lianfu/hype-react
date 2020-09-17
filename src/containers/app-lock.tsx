@@ -85,7 +85,7 @@ const AppLock = (props: IProps, state: IState) => {
   return (
     <AppPortal>
       <Paper square className={classes.lockStyle}>
-        <FormControl variant="outlined" error={isError}>
+        <FormControl variant="filled" error={isError}>
           <InputLabel>Password</InputLabel>
           <Input
             autoFocus

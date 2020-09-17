@@ -17,6 +17,10 @@ a {
   text-decoration: none;
   color: $greyDark;
 }
+hr {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
 
 .hidden { visibility: hidden; }
 .visible { visibility: visible; }
