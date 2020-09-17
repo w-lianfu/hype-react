@@ -1,9 +1,7 @@
 import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import { Button } from '@material-ui/core';
-
-import auth from '@globalStore/auth';
+import { Paper, Typography, Button } from '@material-ui/core';
 
 interface IProps extends RouteComponentProps {
   history: any;
@@ -11,15 +9,13 @@ interface IProps extends RouteComponentProps {
 interface IState {}
 
 const Home = (props: IProps, state: IState) => {
-  const onLock = () => {
-    auth.setAuth(false);
-  };
-
   return (
-    <div>
-      <Button variant="contained" color="primary">Home Page</Button>
-      <Button variant="contained" color="secondary" onClick={onLock}>Lock</Button>
-    </div>
+    <Paper square>
+      <Typography>志，当立于青天白云之上，方可不沾染尘埃...</Typography>
+      <Link to="/setting">
+        <Button variant="contained">Setting Page</Button>
+      </Link>
+    </Paper>
   );
 };
 

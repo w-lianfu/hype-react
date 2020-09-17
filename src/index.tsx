@@ -1,13 +1,11 @@
-import React, { StrictMode } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 
 import * as serviceWorker from './serviceWorker';
 import AppRoute from '@con/app-route';
 
 render(
-  <StrictMode>
-    <AppRoute />
-  </StrictMode>,
+  <AppRoute />,
   document.getElementById('root'),
 );
 

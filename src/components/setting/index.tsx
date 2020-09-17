@@ -1,6 +1,7 @@
 import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
+import { Paper, Button } from '@material-ui/core';
 
 interface IProps extends RouteComponentProps {
   history: any;
@@ -9,7 +10,12 @@ interface IState {}
 
 const Setting = (props: IProps, state: IState) => {
   return (
-    <h2>Setting...</h2>
+    <Paper square>
+      <p>A drop of water.</p>
+      <Link to="/home">
+        <Button variant="contained">Home Page</Button>
+      </Link>
+    </Paper>
   );
 };
 

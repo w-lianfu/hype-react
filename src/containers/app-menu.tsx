@@ -7,12 +7,13 @@ import {
   Link,
 } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import { Paper } from '@material-ui/core';
+import { Paper, Button } from '@material-ui/core';
 
 import auth from '@globalStore/auth';
 import screen from '@globalStore/screen';
 import Home from '@comp/home';
 import Setting from '@comp/setting';
+import AppDial from './app-dial';
 
 interface IProps extends RouteComponentProps {
   history: any;
@@ -40,16 +41,22 @@ const AppMenu = (props: IProps, state: IState) => {
         height: `${screen.height}px`,
         width: '100%',
       }}>
+      <AppDial />
+
       <p>
-        <Link to="/home">Home</Link>
+        <Link to="/home">
+          <Button variant="contained" color="primary">Home Page</Button>
+        </Link>
+        <Link to="/setting">
+          <Button variant="contained" color="secondary">Setting Page</Button>
+        </Link>
       </p>
-      <p>
-        <Link to="/setting">Setting</Link>
-      </p>
+      <hr />
 
       <Switch>
         <Route exact path="/home" component={Home} />
         <Route exact path="/setting" component={Setting} />
+        <Route component={Home} />
       </Switch>
     </Paper>
   );
